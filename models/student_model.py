@@ -3,7 +3,11 @@ from db.db_connection import get_connection
 def add_student(data):
     conn = get_connection()
     cursor = conn.cursor()
-    sql = "INSERT INTO students (student_id, name, dob, gender, class, section, phone, email, address) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"
+    sql = """
+        INSERT INTO students 
+        (student_id, name, dob, gender, class, section, phone, email, address) 
+        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
+    """
     cursor.execute(sql, data)
     conn.commit()
     conn.close()
